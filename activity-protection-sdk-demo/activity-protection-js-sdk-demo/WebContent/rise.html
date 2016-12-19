@@ -1,0 +1,79 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>易盾·活动反作弊js sdk demo</title>
+<style type="text/css">
+    body {
+        width: 265px;
+        margin: 50px auto;
+        text-align: center;
+    }
+    a {
+        font-size: 25px;
+    }
+    input {
+        width: 100px; 
+        height: 35px;
+        line-height: 30px;
+        font-size: 20px;
+        vertical-align: middle;
+    }
+</style>
+
+</head>
+<body id="body">
+    <div>
+        <input type="button" value="赞" onclick="rise();"></input>
+    </div>
+    
+    <!-- 引入sdk -->
+    <!-- 如果前端发布的时候有js压缩合并，请将活动反作弊js排除在外，确保活动反作弊js的script标签不会被移除，且pro-data属性存在。 -->
+    <script type="text/javascript" 
+        src="http://nos.netease.com/yidun/res-wm-1.0.js?t=0" 
+        pro-data="YOUR_SDK_CONFIGURATION"></script>
+
+    <!-- sdk不依赖jQuery，仅演示页面依赖 -->
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    
+	<script type="text/javascript">
+	    function submit() {
+	    	// 获取活动反作弊查询token
+	        var token = watchman.getToken();
+	    	
+	        // 活动反作弊查询token作为参数提交
+	        // 一、token中可能包含+/等字符，如果是通过拼接的方式构造post数据，请注意：
+	        //    1)若Content-Type是application/x-www-form-urlencoded，
+	        //      需要对token用encodeURIComponent函数做url编码
+	        //    2)其他类型的Content-Type不用做url编码
+	        // 二、如果使用js框架，以{}对象的形式作为post参数，也不用url编码
+	        var data = {
+	            "token": token,
+	        };
+	        // 请注意，riseUrl应该与当前demo是同域的
+            // 或者，riseUrl所在域要设置Access-Control-Allow-Origin以允许当年页面跨域访问
+	        var riseUrl = "http://localhost:8181/rise.do";
+	        // 提交业务请求，post参数是一个对象，不用url编码
+	        $.post(riseUrl, data, function(ret) {
+                if (ret == null) {
+                    alert("点赞失败");
+                    return;
+                }
+                // 提示点赞结果
+                alert(ret.msg)
+	        });
+	        
+	        // 如果页面允许多次点赞，需重置活动反作弊SDK状态
+	        watchman.reset();
+	    }
+	    
+	    function rise() {
+	    	// 调用活动反作弊SDK的flush接口，通过回调的方式提交业务请求
+	        watchman.flush(function() {
+	            submit();
+	        });
+	    }
+	</script>
+</body>
+</html>
