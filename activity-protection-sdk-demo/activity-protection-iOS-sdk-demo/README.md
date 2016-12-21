@@ -3,7 +3,7 @@
 
 ### demo 运行步骤
 
-* 1、运行模拟业务后端：`check demo`，运行方法见`register-protection-check-demo`目录
+* 1、运行模拟业务后端：`check demo`，运行方法见`activity-protection-check-demo`目录
 * 2、修改 `FirstViewController.m` 和 `SecondViewController.m` 的 `viewDidAppear:`，填入您的 bussinessId，如下：
 
 		- (void)viewDidAppear:(BOOL)animated {
