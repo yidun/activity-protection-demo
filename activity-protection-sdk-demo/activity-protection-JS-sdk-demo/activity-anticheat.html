@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>网易易盾-活动反作弊 JS SDK Demo</title>
+  <style>
+    .m-form {
+      margin: 50px auto;
+      width: 360px;
+      padding: 20px;
+      border: 1px solid #f1f1f1;
+    }
+    .m-form--title {
+      margin: 0;
+      padding: 0 0 20px;
+      font-size: 18px;
+      color: #333;
+    }
+    .m-form--item {
+      padding-bottom: 10px;
+    }
+    .m-form--button {
+      width: 40px;
+      height: 20px;
+      border: none;
+      margin-left: 10px;
+      border-radius: 4px;
+      background-color: #2875fa;
+      cursor: pointer;
+      color: #fff;
+    }
+    .m-form--button:hover {
+      background-color: #4185fa;
+    }
+  </style>
+</head>
+<body>
+  <div class="m-form">
+    <h3 class="m-form--title">网易易盾-活动反作弊 Demo</h3>
+    <div class="m-form--item">
+      <span>这是一条评论</span><input class="m-form--button" type="button" id="rise" value="点赞" />
+    </div>
+  </div>
+  <!-- sdk不依赖jQuery，仅演示页面依赖 -->
+  <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+  <!-- 引入资源脚本 -->
+  <script src="https://acstatic-dun.126.net/tool.min.js"></script>
+  <script>
+  ;(function ($, undefined) {
+    var wmInstance = null;
+    // 初始化SDK，只需初始化一次
+    initWatchman({
+      productNumber: 'YOUR_PRODUCT_NUMBER',
+      onload: function (instance) {
+        wmInstance = instance;
+      }
+    });
+
+    // 点赞业务逻辑
+    var rise = function () {
+      if (wmInstance) {
+        wmInstance.getToken('YOUR_BUSINESS_ID', function (token) {
+          var data = { token: token };
+          var riseUrl = 'http://localhost:8080/rise.do';
+          $.post(riseUrl, data, function (ret) {
+            if (!ret) {
+              alert('点赞失败');
+            } else {
+              alert('点赞成功');
+            }
+          });
+        });
+      };
+    };
+
+    $('#rise').on('click', rise);
+  }(jQuery))
+  </script>
+</body>
+</html>
