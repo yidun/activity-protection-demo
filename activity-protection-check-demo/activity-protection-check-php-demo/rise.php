@@ -45,6 +45,14 @@ function toUtf8($params){
     return $utf8s;
 }
 
+function convert_null($params) {
+    $new_params = array();
+    foreach ($params as $key => $value) {
+        $utf8s[$key] = is_null($value) ? '' : $value;
+    }
+    return $new_params;
+}
+
 /**
  * 活动反作弊检测接口简单封装
  * $params 请求参数
@@ -56,6 +64,7 @@ function check($params){
     $params["timestamp"] = time();
     $params["nonce"] = sprintf("%d", rand()); // random int
 
+    $params = convert_null($params);
     $params = toUtf8($params);
     $params["signature"] = gen_signature(SECRETKEY, $params);
     // print_r($params);
