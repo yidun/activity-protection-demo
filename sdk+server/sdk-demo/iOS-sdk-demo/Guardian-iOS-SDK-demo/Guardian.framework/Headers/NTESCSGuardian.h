@@ -38,6 +38,25 @@ typedef void (^ tokenBlock)(NSString *token);
 + (void)stop;
 
 /**
+ 启动 SDK
+ 
+ @param number 产品编号
+ @param advanceMode 高级模式（为 YES 时需显式调用数据收集开始和停止接口，为 NO 时自动调用）
+ @param timerMode 定时器模式（为 YES 时需要显式调用打开定时器接口，为 NO 时自动调用）
+ */
++ (void)startWithProductNumber:(NSString *)number advanceMode:(BOOL)advanceMode timerMode:(BOOL)timerMode;
+
+/**
+ 设置 SDK 启动定时器
+ */
++ (void)startTimer;
+
+/**
+ 设置 SDK 停止定时器
+ */
++ (void)stopTimer;
+
+/**
  同步获取 businessID 对应的 Token，默认超时时间3s，非多线程安全
  ⚠️ 建议不要使用多线程调用，如果需要多线程调用，请使用异步接口
  
@@ -80,4 +99,5 @@ typedef void (^ tokenBlock)(NSString *token);
  获取当前SDK版本号
  */
 + (NSString *)getSDKVersion;
+
 @end
