@@ -24,6 +24,6 @@ android {
 dependencies {
 
     compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.netease.mobsecurity:mobsecLib:4.0.1@aar'
+    compile 'com.netease.mobsecurity:mobsecLib:4.0.8@aar'
 
 }
