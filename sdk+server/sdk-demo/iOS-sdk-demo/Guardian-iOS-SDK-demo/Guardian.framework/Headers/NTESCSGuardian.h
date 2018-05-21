@@ -20,12 +20,21 @@ typedef void (^ tokenBlock)(NSString *token);
 + (void)startWithProductNumber:(NSString *)number;
 
 /**
+ 启动 SDK（默认关闭advanceMode）
+ 
+ @param number 产品编号
+ @param urlPrefix 私有化域名，默认值为 https://ac.dun.163yun.com
+ */
++ (void)startWithProductNumber:(NSString *)number urlPrefix:(NSString *)urlPrefix;
+
+/**
  启动 SDK
  
  @param number 产品编号
  @param advanceMode 高级模式（为 YES 时需显式调用数据收集开始和停止接口，为 NO 时自动调用）
+ @param urlPrefix 私有化域名，默认值为 https://ac.dun.163yun.com
  */
-+ (void)startWithProductNumber:(NSString *)number advanceMode:(BOOL)advanceMode;
++ (void)startWithProductNumber:(NSString *)number advanceMode:(BOOL)advanceMode urlPrefix:(NSString *)urlPrefix;
 
 /**
  设置 SDK 开始收集数据
@@ -42,9 +51,9 @@ typedef void (^ tokenBlock)(NSString *token);
  
  @param number 产品编号
  @param advanceMode 高级模式（为 YES 时需显式调用数据收集开始和停止接口，为 NO 时自动调用）
- @param timerMode 定时器模式（为 YES 时需要显式调用打开定时器接口，为 NO 时自动调用）
+ @param urlPrefix 私有化域名，默认值为 https://ac.dun.163yun.com
  */
-+ (void)startWithProductNumber:(NSString *)number advanceMode:(BOOL)advanceMode timerMode:(BOOL)timerMode;
++ (void)startWithProductNumber:(NSString *)number advanceMode:(BOOL)advanceMode timerMode:(BOOL)timerMode urlPrefix:(NSString *)urlPrefix;
 
 /**
  设置 SDK 启动定时器
