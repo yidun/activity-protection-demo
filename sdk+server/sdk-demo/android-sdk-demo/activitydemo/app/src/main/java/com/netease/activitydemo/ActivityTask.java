@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.netease.mobsecurity.rjsb.watchman;
+import com.netease.mobsec.rjsb.watchman;
 
 import java.io.BufferedReader;
 import java.io.IOException;
