@@ -29,7 +29,7 @@
 - (IBAction)praiseAction:(id)sender
 {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [NTESCSGuardian getTokenWithBusinessID:@"your_businessID" timeout:3 completeHandler:^(NSString *token) {
+        [NTESCSGuardian getTokenWithBusinessID:@"your_businessID" timeout:3 unit:NTESCSTimeOutSecondUnit completeHandler:^(NSString *token) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [DataChecker checkToken:token];
             });

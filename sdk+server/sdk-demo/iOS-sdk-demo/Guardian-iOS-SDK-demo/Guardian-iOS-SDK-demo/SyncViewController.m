@@ -33,7 +33,7 @@
 
 - (IBAction)praiseAction:(id)sender
 {
-    NSString *token = [NTESCSGuardian getTokenWithBusinessID:@"your_businessID" timeout:3];
+    NSString *token = [NTESCSGuardian getTokenWithBusinessID:@"your_businessID" timeout:3 unit:NTESCSTimeOutSecondUnit];
     [DataChecker checkToken:token];
 }
 
