@@ -26,7 +26,7 @@ namespace ActivityProtectionDemo.Sdk
     };
 
     /// <summary>
-    /// 易盾验证码二次校验接口简单封装demo
+    /// 活动反作弊验证
     /// </summary>
     public class ActivityAntiCheatVerifier
     {
@@ -68,14 +68,14 @@ namespace ActivityProtectionDemo.Sdk
             parameters.Add("token", token);
 
             //可选参数 尽量详细添加
-            //parameters.put("account", "请替换成用户的唯一标识");
-            //parameters.put("email", "请替换成用户的邮箱");
-            //parameters.put("phone", "请替换成用户的手机号");
-            //parameters.put("ip", "请替换成用户点赞使用的IP");
-            //parameters.put("registerTime", "请替换成用户注册的时间（单位：秒）");
-            //parameters.put("registerIp", "请替换成用户注册时使用的ip");
-            //parameters.put("activityId", "请替换成活动的唯一标识");
-            //parameters.put("target", "请替换成活动的目标，比如：被点赞用户的唯一标识");
+            //parameters.Add("account", "请替换成用户的唯一标识");
+            //parameters.Add("email", "请替换成用户的邮箱");
+            //parameters.Add("phone", "请替换成用户的手机号");
+            //parameters.Add("ip", "请替换成用户点赞使用的IP");
+            //parameters.Add("registerTime", "请替换成用户注册的时间（单位：秒）");
+            //parameters.Add("registerIp", "请替换成用户注册时使用的ip");
+            //parameters.Add("activityId", "请替换成活动的唯一标识");
+            //parameters.Add("target", "请替换成活动的目标，比如：被点赞用户的唯一标识");
 
             // 2.生成签名信息
             String signature = Utils.genSignature(secretPair.secretKey, parameters);
