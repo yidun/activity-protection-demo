@@ -48,7 +48,7 @@ function toUtf8($params){
 function convert_null($params) {
     $new_params = array();
     foreach ($params as $key => $value) {
-        $utf8s[$key] = is_null($value) ? '' : $value;
+        $new_params[$key] = is_null($value) ? '' : $value;
     }
     return $new_params;
 }
