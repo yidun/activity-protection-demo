@@ -1,22 +1,33 @@
-»î¶¯·´×÷±× Android sdk Ê¾Àı demo
+æ´»åŠ¨åä½œå¼Š Android sdk ç¤ºä¾‹ demo
 ===
 
-### demo ÔËĞĞ²½Öè
+### demo è¿è¡Œæ­¥éª¤
 
-* 1¡¢ÔËĞĞÄ£ÄâÒµÎñºó¶Ë£ºcheck demo£¬ÔËĞĞ·½·¨¼ûactivity-protection-check-demoÄ¿Â¼
+* 1ã€è¿è¡Œæ¨¡æ‹Ÿä¸šåŠ¡åç«¯ï¼šcheck demoï¼Œè¿è¡Œæ–¹æ³•è§activity-protection-check-demoç›®å½•
 
-* 2¡¢ĞŞ¸Ä MainActivity.java µÄ onCreate£¬ÌîÈëÄúµÄ productNumber£¬ÈçÏÂ£º
+* 2ã€ä¿®æ”¹ MainActivity.java çš„ onCreateï¼Œå¡«å…¥æ‚¨çš„ productNumberï¼Œå¦‚ä¸‹ï¼š
 ```
-     watchman.init(getApplicationContext(), "your productNumber");
+     	watchman.init(mContext, "your productNumber",new RequestCallback(){
+		@Override
+		public void onResult(int code, String msg) {
+			Log.e(TAG,"init OnResult , code = " + code + " msg = " + msg);
+		}
+	});
 ```	 
-* 3¡¢ĞŞ¸Ä ActivityTask.javaµÄ doInBackground ·½·¨,ÔÚ params.put()ÖĞÌîÈëÄúµÄBusinessId,ÈçÏÂ£º
+* 3ã€ä¿®æ”¹ ActivityTask.javaçš„ doInBackground æ–¹æ³•,åœ¨ params.put()ä¸­å¡«å…¥æ‚¨çš„BusinessId,å¦‚ä¸‹ï¼š
 ```
-	 params.put("token", watchman.getToken("your BusinessId"));
+	String token = watchman.getToken( "your BusinessId",new RequestCallback(){
+		@Override
+		public void onResult(int code, String msg) {
+			Log.e(TAG,"Activity OnResult, code = " + code + " msg = " + msg);
+		}
+	});
+	params.put("token", token);
 ```
-* 4¡¢ĞŞ¸Ä ActivityTask.javaµÄ PostData·½·¨ÖĞµÄurl±äÁ¿
+* 4ã€ä¿®æ”¹ ActivityTask.javaçš„ PostDataæ–¹æ³•ä¸­çš„urlå˜é‡
 ```
      String url = "http://localhost:8181/rise.do";
-     // ÀıÈç£¬Ìæ»»ÈçÏÂ£º
+     // ä¾‹å¦‚ï¼Œæ›¿æ¢å¦‚ä¸‹ï¼š
      String url = "http://10.240.132.43:8181/rise.do";
 ```
-* 5¡¢ÖÁ´Ë£¬ÅäÖÃºÍĞŞ¸ÄÍê³É£¬±àÒëÔËĞĞ¼´¿É
+* 5ã€è‡³æ­¤ï¼Œé…ç½®å’Œä¿®æ”¹å®Œæˆï¼Œç¼–è¯‘è¿è¡Œå³å¯
