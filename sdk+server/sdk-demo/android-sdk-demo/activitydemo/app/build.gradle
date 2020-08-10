@@ -21,9 +21,15 @@ android {
     }
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 dependencies {
 
     compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.netease.mobsec:netmobsecLib:4.2.2@aar'
+    compile(name:'netmobsecLib-release', ext:'aar')
 
 }
