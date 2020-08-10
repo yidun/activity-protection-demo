@@ -2,22 +2,30 @@ package com.netease.activitydemo;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.netease.mobsec.rjsb.watchman;
-import com.netease.mobsec.rjsb.RequestCallback;
+import com.netease.mobsec.WatchMan;
+import com.netease.mobsec.WatchManConf;
+import com.netease.mobsec.InitCallback;
+import com.netease.mobsec.GetTokenCallback;
+
+import static java.lang.Boolean.TRUE;
 
 public class MainActivity extends Activity {
     private Button mBtRise;
-    public statc String TAG= "TestLog";
+    public static String TAG = "TestLog";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        watchman.init(mContext, "your productNumber",new RequestCallback(){
+        WatchManConf myconf = new WatchManConf();
+        myconf.setCollectApk(TRUE);
+        myconf.setCollectSensor(TRUE);
+        WatchMan.init(getApplicationContext(), "ProductNumber", myconf, new InitCallback() {
             @Override
             public void onResult(int code, String msg) {
-                Log.e(TAG,"init,code = " + code + " msg = " + msg);
+                Log.e(TAG,"init OnResult , code = " + code + " msg = " + msg);
             }
         });
         setContentView(R.layout.activity_main);
