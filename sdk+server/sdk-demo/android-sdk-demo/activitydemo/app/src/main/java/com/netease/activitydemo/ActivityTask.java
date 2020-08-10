@@ -2,10 +2,12 @@ package com.netease.activitydemo;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
-import com.netease.mobsec.rjsb.watchman;
-import com.netease.mobsec.rjsb.RequestCallback;
+import com.netease.mobsec.GetTokenCallback;
+import com.netease.mobsec.WatchMan;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,15 +28,20 @@ public class ActivityTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        String token = watchman.getToken( "your BusinessId",new RequestCallback(){
+
+        WatchMan.getToken(new GetTokenCallback(){
             @Override
-            public void onResult(int code, String msg) {
-                Log.e(TAG,"Activity OnResult, code = " + code + " msg = " + msg);
+            public void onResult(int code, String msg,String Token) {
+                Log.e(TAG,"Register, code = " + code + " msg = " + msg+" Token:"+Token);
+
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("token", Token);
+                PostData(params);
+
             }
         });
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("token", token);
-        return PostData(params);
+
+        return "";
     }
 
     @Override
