@@ -8,159 +8,94 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^ NdInfoBlock)(NSString *dToken);
+typedef void (^ initBlock)(NSInteger code, NSString *message);
 
-typedef void (^ tokenBlock)(NSString *token);
+typedef void (^ NdInfoBlock)(NSString *dToken, NSInteger code, NSString *message);
 
-/**
- 设置 timeOut 时间单位
- */
-typedef NS_ENUM(NSInteger, NTESCSTimeOutUnit) {
-    NTESCSTimeOutSecondUnit = 1,    // 秒级
-    NTESCSTimeOutMilliSecondUnit,   // 毫秒级
-};
+typedef void (^ tokenBlock)(NSString *token, NSInteger code, NSString *message);
 
 @interface NTESCSGuardian: NSObject
 
 /**
- 启动 SDK（默认关闭advanceMode）
+ urlPrefix 私有化域名，默认值为 https://ac.dun.163yun.com
+ */
+
+@property (copy, nonatomic) NSString *urlPrefix;
+/**
+ channelName 渠道名称，默认值为 "App Store"
+ */
+@property (copy, nonatomic) NSString *channelName;
+
+/**
+ 传感器数据是否采集开关 默认为开启。 YES为开启，NO为关闭
+*/
+@property (assign, nonatomic) BOOL seniorCollectStatus;
+
+/**
+获取单例方法 设置属性时使用
+*/
++ (instancetype)sharedInstance;
+
+/**
+ 初始化 SDK
  
  @param number 产品编号
  */
-+ (void)startWithProductNumber:(NSString *)number;
++ (void)initWithProductNumber:(NSString *)number completeHandler:(initBlock)block;
+
 
 /**
- 启动 SDK（默认关闭advanceMode）
- 
- @param number 产品编号
- @param urlPrefix 私有化域名，默认值为 https://ac.dun.163yun.com
- */
-+ (void)startWithProductNumber:(NSString *)number urlPrefix:(NSString *)urlPrefix;
-
-/**
- 启动 SDK（默认关闭advanceMode）
- 
- @param number 产品编号
- @param urlPrefix 私有化域名，默认值为 https://ac.dun.163yun.com
- @param channelName 渠道名称，默认值为 "App Store"
- */
-+ (void)startWithProductNumber:(NSString *)number urlPrefix:(NSString *)urlPrefix channelName:(NSString *)channelName;
-
-/**
- 启动 SDK
- 
- @param number 产品编号
- @param advanceMode 高级模式（为 YES 时需显式调用数据收集开始和停止接口，为 NO 时自动调用）
- @param urlPrefix 私有化域名，默认值为 https://ac.dun.163yun.com
- @param channelName 渠道名称，默认值为 "App Store"
- */
-+ (void)startWithProductNumber:(NSString *)number advanceMode:(BOOL)advanceMode urlPrefix:(NSString *)urlPrefix channelName:(NSString *)channelName;
-
-/**
- 启动 SDK
- 
- @param number 产品编号
- @param advanceMode 高级模式（为 YES 时需显式调用数据收集开始和停止接口，为 NO 时自动调用）
- @param timerMode 定时器模式（为 YES 时需要显式调用打开定时器接口，为 NO 时自动调用）
- @param urlPrefix 私有化域名，默认值为 https://ac.dun.163yun.com
- @param channelName 渠道名称，默认值为 "App Store"
- */
-+ (void)startWithProductNumber:(NSString *)number advanceMode:(BOOL)advanceMode timerMode:(BOOL)timerMode urlPrefix:(NSString *)urlPrefix channelName:(NSString *)channelName;
-
-/**
- 设置 SDK 开始收集数据
- */
-+ (void)start;
-
-/**
- 设置 SDK 停止收集数据
- */
-+ (void)stop;
-
-/**
- 设置 SDK 启动定时器
- */
-+ (void)startTimer;
-
-/**
- 设置 SDK 停止定时器
- */
-+ (void)stopTimer;
-
-/**
- 同步获取 businessID 对应的 Token，默认超时时间3s，非多线程安全
- ⚠️ 建议不要使用多线程调用，如果需要多线程调用，请使用异步接口
- 
- @param businessID 业务编号
- @return token 字符串
- */
-+ (NSString *)getTokenWithBusinessID:(NSString *)businessID;
-
-/**
- 同步获取 businessID 对应的 Token，并指定超时时间，非多线程安全
- ⚠️ 建议不要使用多线程调用，如果需要多线程调用，请使用异步接口
- 
- @param businessID 业务编号
- @param timeout 超时时间（范围：10s以内）
- @param unit 时间单位，可选秒、毫秒
- @return token 字符串
- */
-+ (NSString *)getTokenWithBusinessID:(NSString *)businessID timeout:(int)timeout unit:(NTESCSTimeOutUnit)unit;
-
-/**
- 异步获取 businessID 对应的 Token，默认超时3s，多线程安全
+ 获取Token，默认超时3s，
  
  @param block 获取Token完成后回调
  */
-+ (void)getTokenWithBusinessID:(NSString *)businessID completeHandler:(tokenBlock)block;
++ (void)getTokenWithCompleteHandler:(tokenBlock)block;
 
 /**
- 异步获取 businessID 对应的 Token，多线程安全
+ 获取Token
  
  @param block 获取token的block
- @param timeout 超时时间（范围：10s以内）
- @param unit 时间单位，可选秒、毫秒
+ @param timeout 超时时间（范围：10000ms以内  单位:ms）
+
  */
-+ (void)getTokenWithBusinessID:(NSString *)businessID timeout:(int)timeout unit:(NTESCSTimeOutUnit)unit completeHandler:(tokenBlock)block;
++ (void)getTokenWithTimeout:(NSInteger)timeout completeHandler:(tokenBlock)block;
+
 
 /**
- 同步获取 dToken，默认超时时间3s
- ⚠️ 建议不要使用多线程调用，如果需要多线程调用，请使用异步接口
- 
- @return dToken 字符串
- */
-+ (NSString *)getNdInfo;
-
-/**
- 同步获取 dToken，并指定超时时间和时间单位
- ⚠️ 建议不要使用多线程调用，如果需要多线程调用，请使用异步接口
- 
- @param timeout 超时时间（范围：10s以内）
- @param unit 时间单位，可选秒、毫秒
- @return dToken 字符串
- */
-+ (NSString *)getNdInfoWithTimeout:(int)timeout unit:(NTESCSTimeOutUnit)unit;
-
-/**
- 异步获取 dToken，并指定超时时间和时间单位，线程安全
+ 获取 dToken。默认超时3s
  
  @param block 获取Token完成后回调
  */
 + (void)getNdInfoWithCompleteHandler:(NdInfoBlock)block;
 
 /**
- 异步获取 dToken，并指定超时时间和时间单位，线程安全
+ 异步获取 dToken，并指定超时时间
  
- @param timeout 超时时间（范围：10s以内）
- @param unit 时间单位，可选秒、毫秒
+ @param timeout 超时时间（范围：10000ms以内  单位:ms）
  @param block 获取Token完成后回调
  */
-+ (void)getNdInfoWithTimeout:(int)timeout unit:(NTESCSTimeOutUnit)unit completeHandler:(NdInfoBlock)block;
++ (void)getNdInfoWithTimeout:(NSInteger)timeout completeHandler:(NdInfoBlock)block;
 
 /**
- 清除SDK占用的缓存，建议在清除App缓存时，同时清除SDK缓存
+  传感器数据是否采集开关 默认为开启。 YES为开启，NO为关闭. 与设置属性功能相同，提供一个类方法。
  */
-+ (void)cleanSDKCache;
++ (void)setSeniorCollectStatus:(BOOL)isOpen;
+
+/**
+ 设置自定义数据，可调用多次
+ 
+ @param value 值
+ @param key 键
+ */
++ (void)setExtraData:(NSString *)value forKey:(NSString *)key;
+
+/**
+ 设置跟踪ID
+ 
+ @param customTrackId  跟踪ID
+
+ */
++ (void)setCustomTrackId:(NSString *)customTrackId;
 
 /**
  获取当前SDK版本号

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		387D2AF224E26F3D00418179 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387D2AF124E26F3D00418179 /* AVFoundation.framework */; };
+		387D2AF424E26F4300418179 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387D2AF324E26F4300418179 /* CoreTelephony.framework */; };
+		387D2AF624E26F4A00418179 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387D2AF524E26F4A00418179 /* SystemConfiguration.framework */; };
 		DC21937022311CE800BA6CA4 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC21936F22311CE800BA6CA4 /* AdSupport.framework */; };
 		DC21937322311D2D00BA6CA4 /* Guardian.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E656F1D61FB47A2E001ABE82 /* Guardian.framework */; };
 		E656F1A51FB479F9001ABE82 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E656F1A41FB479F9001ABE82 /* AppDelegate.m */; };
@@ -14,9 +17,7 @@
 		E656F1AD1FB479F9001ABE82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E656F1AC1FB479F9001ABE82 /* Assets.xcassets */; };
 		E656F1B01FB479F9001ABE82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E656F1AE1FB479F9001ABE82 /* LaunchScreen.storyboard */; };
 		E656F1B31FB479F9001ABE82 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E656F1B21FB479F9001ABE82 /* main.m */; };
-		E656F1DA1FB47AD7001ABE82 /* SyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E656F1D91FB47AD7001ABE82 /* SyncViewController.m */; };
-		E656F1DD1FB47AE6001ABE82 /* AsyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E656F1DC1FB47AE6001ABE82 /* AsyncViewController.m */; };
-		E656F1E01FB47EF6001ABE82 /* DataChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = E656F1DF1FB47EF6001ABE82 /* DataChecker.m */; };
+		E656F1DD1FB47AE6001ABE82 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E656F1DC1FB47AE6001ABE82 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		387D2AF124E26F3D00418179 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		387D2AF324E26F4300418179 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		387D2AF524E26F4A00418179 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DC21936F22311CE800BA6CA4 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		DC21937122311CFD00BA6CA4 /* Guardian.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Guardian.framework; path = ../Guardian.framework; sourceTree = "<group>"; };
 		E656F1A01FB479F9001ABE82 /* Guardian-iOS-SDK-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guardian-iOS-SDK-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,12 +54,8 @@
 		E656F1B81FB479F9001ABE82 /* Guardian-iOS-SDK-demoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Guardian-iOS-SDK-demoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E656F1C31FB479F9001ABE82 /* Guardian-iOS-SDK-demoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Guardian-iOS-SDK-demoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E656F1D61FB47A2E001ABE82 /* Guardian.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Guardian.framework; sourceTree = "<group>"; };
-		E656F1D81FB47AD7001ABE82 /* SyncViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyncViewController.h; sourceTree = "<group>"; };
-		E656F1D91FB47AD7001ABE82 /* SyncViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncViewController.m; sourceTree = "<group>"; };
-		E656F1DB1FB47AE6001ABE82 /* AsyncViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AsyncViewController.h; sourceTree = "<group>"; };
-		E656F1DC1FB47AE6001ABE82 /* AsyncViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AsyncViewController.m; sourceTree = "<group>"; };
-		E656F1DE1FB47EF6001ABE82 /* DataChecker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataChecker.h; sourceTree = "<group>"; };
-		E656F1DF1FB47EF6001ABE82 /* DataChecker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataChecker.m; sourceTree = "<group>"; };
+		E656F1DB1FB47AE6001ABE82 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E656F1DC1FB47AE6001ABE82 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +63,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				387D2AF424E26F4300418179 /* CoreTelephony.framework in Frameworks */,
+				387D2AF624E26F4A00418179 /* SystemConfiguration.framework in Frameworks */,
 				DC21937022311CE800BA6CA4 /* AdSupport.framework in Frameworks */,
 				DC21937322311D2D00BA6CA4 /* Guardian.framework in Frameworks */,
+				387D2AF224E26F3D00418179 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,12 +112,8 @@
 			children = (
 				E656F1A31FB479F9001ABE82 /* AppDelegate.h */,
 				E656F1A41FB479F9001ABE82 /* AppDelegate.m */,
-				E656F1D81FB47AD7001ABE82 /* SyncViewController.h */,
-				E656F1D91FB47AD7001ABE82 /* SyncViewController.m */,
-				E656F1DB1FB47AE6001ABE82 /* AsyncViewController.h */,
-				E656F1DC1FB47AE6001ABE82 /* AsyncViewController.m */,
-				E656F1DE1FB47EF6001ABE82 /* DataChecker.h */,
-				E656F1DF1FB47EF6001ABE82 /* DataChecker.m */,
+				E656F1DB1FB47AE6001ABE82 /* ViewController.h */,
+				E656F1DC1FB47AE6001ABE82 /* ViewController.m */,
 				E656F1A91FB479F9001ABE82 /* Main.storyboard */,
 				E656F1AC1FB479F9001ABE82 /* Assets.xcassets */,
 				E656F1AE1FB479F9001ABE82 /* LaunchScreen.storyboard */,
@@ -127,6 +126,9 @@
 		E656F1D51FB47A2D001ABE82 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				387D2AF524E26F4A00418179 /* SystemConfiguration.framework */,
+				387D2AF324E26F4300418179 /* CoreTelephony.framework */,
+				387D2AF124E26F3D00418179 /* AVFoundation.framework */,
 				DC21937122311CFD00BA6CA4 /* Guardian.framework */,
 				DC21936F22311CE800BA6CA4 /* AdSupport.framework */,
 				E656F1D61FB47A2E001ABE82 /* Guardian.framework */,
@@ -267,9 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E656F1DA1FB47AD7001ABE82 /* SyncViewController.m in Sources */,
-				E656F1DD1FB47AE6001ABE82 /* AsyncViewController.m in Sources */,
-				E656F1E01FB47EF6001ABE82 /* DataChecker.m in Sources */,
+				E656F1DD1FB47AE6001ABE82 /* ViewController.m in Sources */,
 				E656F1B31FB479F9001ABE82 /* main.m in Sources */,
 				E656F1A51FB479F9001ABE82 /* AppDelegate.m in Sources */,
 			);
@@ -433,11 +433,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J7ZZQ73G43;
+				DEVELOPMENT_TEAM = XB333SWTAF;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)";
 				INFOPLIST_FILE = "Guardian-iOS-SDK-demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "NetEase.Guardian-iOS-SDK-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -449,11 +450,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J7ZZQ73G43;
+				DEVELOPMENT_TEAM = XB333SWTAF;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)";
 				INFOPLIST_FILE = "Guardian-iOS-SDK-demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "NetEase.Guardian-iOS-SDK-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
