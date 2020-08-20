@@ -18,15 +18,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+        
+    //必要步骤 初始化
+    [NTESCSGuardian initWithProductNumber:@"your_product_number" completeHandler:^(NSInteger code, NSString *message) {
+        
     
-    // 非高级模式启动①
-    [NTESCSGuardian startWithProductNumber:@"your_product_number"];
+    }];
     
-    // 非高级模式启动②
-//    [NTESCSGuardian startWithProductNumber:@"your_product_number" advanceMode:NO];
-    
-    // 高级模式启动
-//    [NTESCSGuardian startWithProductNumber:@"your_product_number" advanceMode:YES];
+    //可选配置 设置传感器开关 默认开启 可在任何时刻调用
+//    [NTESCSGuardian setSeniorCollectStatus:YES];
+    //可选配置 设置渠道名称 只能在初始化时候调用
+//    [NTESCSGuardian sharedInstance].channelName = @"channelName";
+    //可选配置 设置私有化域名 只能在初始化时候调用
+//    [NTESCSGuardian sharedInstance].urlPrefix = @"私有化域名";
+    //可选配置 设置自定义数据 可在任意时刻调用
+//    [NTESCSGuardian setExtraData:@"data" forKey:@"key"];
     
     return YES;
 }

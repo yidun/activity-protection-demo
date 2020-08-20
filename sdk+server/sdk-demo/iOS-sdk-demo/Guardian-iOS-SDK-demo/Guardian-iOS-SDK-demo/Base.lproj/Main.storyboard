@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="en3-Kb-S2Z">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="en3-Kb-S2Z">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--异步接口-->
+        <!--Test-->
         <scene sceneID="xtH-jc-JDW">
             <objects>
-                <viewController id="7C0-Sp-hpd" customClass="AsyncViewController" sceneMemberID="viewController">
+                <viewController id="7C0-Sp-hpd" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2mt-rd-Mqg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点赞页面" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lR-fz-yMs">
-                                <rect key="frame" x="135" y="100" width="105.5" height="31.5"/>
+                                <rect key="frame" x="135" y="80" width="105.5" height="31.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vqm-mZ-l4s">
-                                <rect key="frame" x="137" y="313" width="100" height="40"/>
+                                <rect key="frame" x="137.5" y="313.5" width="100" height="40"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Gv0-lg-WHo"/>
@@ -35,123 +34,21 @@
                                     <action selector="praiseAction:" destination="7C0-Sp-hpd" eventType="touchUpInside" id="aVd-3O-oAu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ao3-IL-bnl">
-                                <rect key="frame" x="50" y="528" width="80" height="40"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="43H-Rv-Ijx"/>
-                                    <constraint firstAttribute="width" constant="80" id="zYC-lG-N1A"/>
-                                </constraints>
-                                <state key="normal" title="Start"/>
-                                <connections>
-                                    <action selector="startAction:" destination="7C0-Sp-hpd" eventType="touchUpInside" id="Je9-QA-kdh"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRo-3j-QYs">
-                                <rect key="frame" x="245" y="528" width="80" height="40"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Hrf-bf-Zar"/>
-                                    <constraint firstAttribute="width" constant="80" id="e3v-Ko-JHy"/>
-                                </constraints>
-                                <state key="normal" title="Stop"/>
-                                <connections>
-                                    <action selector="stopAction:" destination="7C0-Sp-hpd" eventType="touchUpInside" id="h8h-fg-pVr"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Vqm-mZ-l4s" firstAttribute="centerX" secondItem="2mt-rd-Mqg" secondAttribute="centerX" id="4XO-zY-OwE"/>
-                            <constraint firstItem="TXs-rj-LFX" firstAttribute="bottom" secondItem="bRo-3j-QYs" secondAttribute="bottom" constant="50" id="9GU-ps-1fh"/>
                             <constraint firstItem="Vqm-mZ-l4s" firstAttribute="centerY" secondItem="2mt-rd-Mqg" secondAttribute="centerY" id="Uxl-Gp-oJb"/>
                             <constraint firstItem="4lR-fz-yMs" firstAttribute="top" secondItem="TXs-rj-LFX" secondAttribute="top" constant="80" id="aJV-hD-1Md"/>
                             <constraint firstItem="4lR-fz-yMs" firstAttribute="centerX" secondItem="2mt-rd-Mqg" secondAttribute="centerX" id="bcU-49-1ZS"/>
-                            <constraint firstItem="TXs-rj-LFX" firstAttribute="bottom" secondItem="ao3-IL-bnl" secondAttribute="bottom" constant="50" id="dah-7g-JNq"/>
-                            <constraint firstItem="TXs-rj-LFX" firstAttribute="trailing" secondItem="bRo-3j-QYs" secondAttribute="trailing" constant="50" id="n5D-z9-eKT"/>
-                            <constraint firstItem="ao3-IL-bnl" firstAttribute="leading" secondItem="TXs-rj-LFX" secondAttribute="leading" constant="50" id="zhE-fW-m47"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TXs-rj-LFX"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="异步接口" id="lHa-zO-XYi"/>
+                    <tabBarItem key="tabBarItem" title="Test" id="lHa-zO-XYi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AQl-1j-pVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-350" y="93"/>
-        </scene>
-        <!--同步接口-->
-        <scene sceneID="6qD-sv-Lm2">
-            <objects>
-                <viewController id="MHM-fF-Pk3" customClass="SyncViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Q5w-gD-hNK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点赞页面" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoM-1U-8YV">
-                                <rect key="frame" x="135" y="100" width="106" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATp-B3-5DI">
-                                <rect key="frame" x="137" y="313" width="100" height="40"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="8or-ho-hD9"/>
-                                    <constraint firstAttribute="width" constant="100" id="n9z-pW-jvh"/>
-                                </constraints>
-                                <state key="normal" title="👍点赞👍"/>
-                                <connections>
-                                    <action selector="praiseAction:" destination="MHM-fF-Pk3" eventType="touchUpInside" id="Hxt-sQ-DPH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvQ-ba-wEb">
-                                <rect key="frame" x="50" y="528" width="80" height="40"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Gax-gN-hsE"/>
-                                    <constraint firstAttribute="width" constant="80" id="geG-Pf-Ngj"/>
-                                </constraints>
-                                <state key="normal" title="start"/>
-                                <connections>
-                                    <action selector="startAction:" destination="MHM-fF-Pk3" eventType="touchUpInside" id="Jbg-M3-Zzx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rO-3i-tlM">
-                                <rect key="frame" x="235" y="528" width="80" height="40"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="LYD-ZC-7zP"/>
-                                    <constraint firstAttribute="width" constant="80" id="fOF-0m-quk"/>
-                                </constraints>
-                                <state key="normal" title="Stop"/>
-                                <connections>
-                                    <action selector="stopAction:" destination="MHM-fF-Pk3" eventType="touchUpInside" id="5to-EP-MSK"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="ATp-B3-5DI" firstAttribute="centerY" secondItem="Q5w-gD-hNK" secondAttribute="centerY" id="95M-7N-TdV"/>
-                            <constraint firstItem="Cgn-Mx-Ugi" firstAttribute="bottom" secondItem="1rO-3i-tlM" secondAttribute="bottom" constant="50" id="BDg-sJ-WVH"/>
-                            <constraint firstItem="eoM-1U-8YV" firstAttribute="centerX" secondItem="Q5w-gD-hNK" secondAttribute="centerX" id="IF9-1R-vJa"/>
-                            <constraint firstItem="Cgn-Mx-Ugi" firstAttribute="trailing" secondItem="1rO-3i-tlM" secondAttribute="trailing" constant="60" id="QQi-46-Zid"/>
-                            <constraint firstItem="Cgn-Mx-Ugi" firstAttribute="bottom" secondItem="JvQ-ba-wEb" secondAttribute="bottom" constant="50" id="bEv-JW-9dt"/>
-                            <constraint firstItem="ATp-B3-5DI" firstAttribute="centerX" secondItem="Q5w-gD-hNK" secondAttribute="centerX" id="f94-eJ-fAY"/>
-                            <constraint firstItem="eoM-1U-8YV" firstAttribute="top" secondItem="Cgn-Mx-Ugi" secondAttribute="top" constant="80" id="qdP-UB-KMH"/>
-                            <constraint firstItem="JvQ-ba-wEb" firstAttribute="leading" secondItem="Cgn-Mx-Ugi" secondAttribute="leading" constant="50" id="zN1-6t-VFB"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Cgn-Mx-Ugi"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="同步接口" id="0Kq-VE-Hiy"/>
-                    <connections>
-                        <outlet property="startButton" destination="JvQ-ba-wEb" id="4xg-Ai-i85"/>
-                        <outlet property="stopButton" destination="1rO-3i-tlM" id="EzN-21-KlH"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ydT-Qj-nil" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-350" y="-572"/>
+            <point key="canvasLocation" x="-322" y="-240"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ijl-Wa-vfB">
@@ -163,7 +60,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="MHM-fF-Pk3" kind="relationship" relationship="viewControllers" id="aTV-vV-ccK"/>
                         <segue destination="7C0-Sp-hpd" kind="relationship" relationship="viewControllers" id="VEB-5r-fOb"/>
                     </connections>
                 </tabBarController>
