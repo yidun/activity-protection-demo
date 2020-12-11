@@ -33,14 +33,14 @@ public class HttpClient4Utils {
      * @return
      */
     public static HttpClient createHttpClient(int maxTotal, int maxPerRoute, int socketTimeout, int connectTimeout,
-                    int connectionRequestTimeout) {
+            int connectionRequestTimeout) {
         RequestConfig defaultRequestConfig = RequestConfig.custom().setSocketTimeout(socketTimeout)
-                        .setConnectTimeout(connectTimeout).setConnectionRequestTimeout(connectionRequestTimeout).build();
+                .setConnectTimeout(connectTimeout).setConnectionRequestTimeout(connectionRequestTimeout).build();
         PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
         cm.setMaxTotal(maxTotal);
         cm.setDefaultMaxPerRoute(maxPerRoute);
         CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(cm)
-                        .setDefaultRequestConfig(defaultRequestConfig).build();
+                .setDefaultRequestConfig(defaultRequestConfig).build();
         return httpClient;
     }
 
@@ -48,9 +48,9 @@ public class HttpClient4Utils {
      * 发送post请求
      *
      * @param httpClient
-     * @param url        请求地址
-     * @param params     请求参数
-     * @param encoding   编码
+     * @param url 请求地址
+     * @param params 请求参数
+     * @param encoding 编码
      * @return
      */
     public static String sendPost(HttpClient httpClient, String url, Map<String, String> params, Charset encoding) {
@@ -88,8 +88,9 @@ public class HttpClient4Utils {
 
     /**
      * 发送post请求
-     * @param url        请求地址
-     * @param params     请求参数
+     * 
+     * @param url 请求地址
+     * @param params 请求参数
      * @return
      */
     public static String sendPost(String url, Map<String, String> params) {

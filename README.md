@@ -1,4 +1,4 @@
-# 营销反作弊 示例demo
+# 反作弊 示例demo
 
 ## 文件说明
 	
@@ -10,6 +10,8 @@
 		│   ├── activity-protection-check-csharp-demo  C# check接口校验
 		│   ├── activity-protection-check-java-demo    java check接口校验
 		│   └── activity-protection-check-php-demo     php check接口校验
+		│   └── activity-protection-check-golang-demo     golang check接口校验
+		│   └── activity-protection-check-python-demo     python check接口校验
 		└── sdk-demo: sdk集成的demo
 		    ├── activity-protection-Android-sdk-demo 安卓sdk集成demo
 		    ├── activity-protection-JS-sdk-demo      浏览器sdk集成demo

@@ -1,4 +1,11 @@
-﻿﻿using Newtonsoft.Json.Linq;
+﻿//易盾反作弊CSharp示例代码
+//接口文档: https://support.dun.163.com/documents/15588071870066688?docId=429073890435571712
+//开发工具 visual studio 2019 社区版，.Net 版本 4.5.2+
+//author = 'yidun-dev'
+//date = '2020/12/10'
+//version = '0.1'
+
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +14,7 @@ using System.Web;
 
 namespace ActivityProtectionDemo.Sdk
 {
-
-    public enum VerifyResultType
+    public enum CheckResultType
     {
         Success = 0,
         Suspicion = 10,
@@ -28,31 +34,28 @@ namespace ActivityProtectionDemo.Sdk
     /// <summary>
     /// 活动反作弊验证
     /// </summary>
-    public class ActivityAntiCheatVerifier
+    class ActivityAntiCheatChecker
     {
-        public static string VERIFY_API = "https://ac.dun.163yun.com/v2/activity/check"; // verify接口地址
+        /** 产品密钥ID */
+        private static string SECRET_ID = "YOUR_SECRET_ID";
+        /** 产品私有密钥，服务端生成签名信息使用，请严格保管，避免泄露 */
+        private static string SECRET_KEY = "YOUR_SECRET_KEY";
+        /** 业务ID，易盾根据产品业务特点分配 */
+        private static string BUSINESS_ID = "YOUR_BUSINESS_ID";
 
-        private NESecretPair secretPair; // 密钥对
-        private readonly string VERSION = "200";
-        private readonly HttpClient client = Utils.makeHttpClient();
-        private string BUSINESS_ID;
+        private static string VERSION = "300";
+        private static string CHECK_URL = "https://ac.dun.163.com/v3/common/check"; // check接口地址
+        private static HttpClient client = Utils.makeHttpClient();
 
-        public ActivityAntiCheatVerifier( NESecretPair secretPair, string businessID)
-        {
-            this.secretPair = secretPair;
-            BUSINESS_ID = businessID;
-        }
-        
+
         /// <summary>
-        /// 向易盾验证码后台发起二次校验请求
+        /// 简单测试
         /// </summary>
-        /// <param name="validate">二次校验请求字符串</param>
-        /// <param name="user">当前用户信息，可以为空字符串</param>
         /// <returns></returns>
-        public VerifyResultType verify(string token)
+        public static void Main(string[] args)
         {
-            //can add your own user validation logic 
-
+            //前端提交的查询token
+            string token = "YOUR_FRONT_TOKEN";
 
             Dictionary<String, String> parameters = new Dictionary<String, String>();
             long curr = (long)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds/1000;
@@ -61,13 +64,13 @@ namespace ActivityProtectionDemo.Sdk
 
             // 1.设置公共参数
             parameters.Add("businessId", BUSINESS_ID);
-            parameters.Add("secretId", secretPair.secretId);
+            parameters.Add("secretId", SECRET_ID);
             parameters.Add("version", VERSION);
             parameters.Add("timestamp", time);
             parameters.Add("nonce", new Random().Next().ToString());
             parameters.Add("token", token);
 
-            //可选参数 尽量详细添加
+            //业务可选参数 尽量详细添加
             //parameters.Add("account", "请替换成用户的唯一标识");
             //parameters.Add("email", "请替换成用户的邮箱");
             //parameters.Add("phone", "请替换成用户的手机号");
@@ -76,28 +79,31 @@ namespace ActivityProtectionDemo.Sdk
             //parameters.Add("registerIp", "请替换成用户注册时使用的ip");
             //parameters.Add("activityId", "请替换成活动的唯一标识");
             //parameters.Add("target", "请替换成活动的目标，比如：被点赞用户的唯一标识");
+            //parameters.Add("nickname", "请替换成用户昵称，比如：昵称");
+            //parameters.Add("userLevel", "请替换成用户等级，比如：VIP用户");
+            //parameters.Add("extData", "附加数据，json格式");
 
             // 2.生成签名信息
-            String signature = Utils.genSignature(secretPair.secretKey, parameters);
+            String signature = Utils.genSignature(SECRET_KEY, parameters);
             parameters.Add("signature", signature);
 
             // 3.发送HTTP请求
-            String response = Utils.doPost(client, VERIFY_API, parameters, 5000);
-            return verifyRet(response);
+            String response = Utils.doPost(client, CHECK_URL, parameters, 5000);
+            Console.WriteLine(parseRet(response));
         }
 
         /// <summary>
-        /// 解析二次校验接口返回的结果
+        /// 解析cehck接口返回的结果
         /// </summary>
         /// <param name="response"></param>
         /// <returns></returns>
-        private VerifyResultType verifyRet(string response)
+        static CheckResultType parseRet(string response)
         {
-            VerifyResultType returnresult = VerifyResultType.Success;
+            CheckResultType returnResult = CheckResultType.Success;
             if (String.IsNullOrEmpty(response))
             {
-                returnresult = VerifyResultType.Error;
-                return returnresult;
+                returnResult = CheckResultType.Error;
+                return returnResult;
             }
             try
             {
@@ -108,14 +114,13 @@ namespace ActivityProtectionDemo.Sdk
                 {
                     JObject array = (JObject)ret.SelectToken("result");
                     int actioncode = array.GetValue("action").ToObject<Int32>();
-                    int hittype = array.GetValue("hitType").ToObject<Int32>();
 
-                    returnresult = (VerifyResultType)actioncode;
+                    returnResult = (CheckResultType)actioncode;
                 }
                 else
                 {
                     Console.WriteLine("error: {0}", msg);
-                    returnresult = (VerifyResultType)code;
+                    returnResult = (CheckResultType)code;
                 }
             }
             catch (Exception e)
@@ -124,25 +129,11 @@ namespace ActivityProtectionDemo.Sdk
                 {
                     Console.WriteLine("IOException source: {0}", e.Source);
                 }
-                returnresult = VerifyResultType.Error;
+                returnResult = CheckResultType.Error;
 
             }
-            return returnresult;
+            return returnResult;
         }
     }
 
-    /// <summary>
-    /// 易盾验证码密钥对
-    /// </summary>
-    public class NESecretPair
-    {
-        public string secretId; // 密钥对id
-        public string secretKey; // 密钥对key
-
-        public NESecretPair(string secretId, string secretKey)
-        {
-            this.secretId = secretId;
-            this.secretKey = secretKey;
-        }
-    }
 }

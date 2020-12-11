@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -84,12 +83,12 @@ public class RiseServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         this.doPost(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 
         response.setContentType("application/json;charset=utf-8");
         // 线上环境请勿设置为*，否则会带来安全隐患
@@ -99,23 +98,28 @@ public class RiseServlet extends HttpServlet {
         // 从请求中解析出token参数
         String token = request.getParameter("token");
         try {
+            // 这里可以填入业务参数
             Map<String, String> businessParams = new HashMap<String, String>();
             /*
-             * 以下是可选参数，如果有，建议提供，数据越多，识别效果越好
-             * 
-            params.put("account", "请替换成用户的唯一标识");
-            params.put("email", "请替换成用户的邮箱");
-            params.put("phone", "请替换成用户的手机号");
-            params.put("ip", "请替换成用户点赞使用的IP");
-            params.put("registerTime", "请替换成用户注册的时间（单位：秒）");
-            params.put("registerIp", "请替换成用户注册时使用的ip");
-            params.put("activityId", "请替换成活动的唯一标识");
-            params.put("target", "请替换成活动的目标，比如：被点赞用户的唯一标识");
-            params.put("extData", "附加数据，建议json格式");
-             */
+             * @formatter:off
+             * 以下是可选参数，如果有，建议提供，数据越多，识别效果越好 for 
+             * params.put("account", "请替换成用户的唯一标识"); 
+             * params.put("email", "请替换成用户的邮箱");
+             * params.put("phone", "请替换成用户的手机号"); 
+             * params.put("ip", "请替换成用户点赞使用的IP"); 
+             * params.put("registerTime","请替换成用户注册的时间（单位：秒）"); 
+             * params.put("registerIp", "请替换成用户注册时使用的ip"); 
+             * params.put("activityId","请替换成活动的唯一标识"); 
+             * params.put("target", "请替换成活动的目标，比如：被点赞用户的唯一标识"); 
+             * params.put("nickname", "请替换成用户昵称，比如：昵称"); 
+             * params.put("userLevel", "请替换成用户等级，比如：VIP用户"); 
+             * params.put("extData", "附加数据，json格式");
+             * @formatter:on
+             * */
 
-            // 活动反作弊检测
-            CheckResult result = new ActivityProtectionChecker(SECRET_ID, SECRET_KEY, BUSINESS_ID).check(token, businessParams);
+            // 反作弊检测
+            CheckResult result = new ActivityProtectionChecker(SECRET_ID, SECRET_KEY, BUSINESS_ID).check(token,
+                    businessParams);
             switch (result) {
                 case NORMAL:
                     // 检测结果为：正常，不做特殊处理，继续后面的业务

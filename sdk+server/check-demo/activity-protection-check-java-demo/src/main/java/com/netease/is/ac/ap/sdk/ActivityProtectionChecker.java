@@ -3,9 +3,9 @@ package com.netease.is.ac.ap.sdk;
 public class ActivityProtectionChecker extends AbstProtectionChecker {
 
     /**
-     * 活动反作弊检测接口地址
+     * 反作弊检测接口地址
      */
-    private static final String API_URL = "https://ac.dun.163yun.com/v2/activity/check";
+    private static final String API_URL = "https://ac.dun.163.com/v3/common/check";
 
     /**
      * 
