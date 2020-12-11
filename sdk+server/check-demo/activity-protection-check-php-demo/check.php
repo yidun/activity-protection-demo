@@ -1,16 +1,16 @@
 <?php
 
-/** 产品密钥ID，产品标识 */
+/** 这里填入在易盾官网申请的产品密钥ID，产品标识 */
 define("SECRETID", "YOUR_SECRET_ID");
-/** 产品私有密钥，服务端生成签名信息使用，请严格保管，避免泄露 */
+/** 这里填入在易盾官网申请的产品私有密钥，服务端生成签名信息使用，请严格保管，避免泄露 */
 define("SECRETKEY", "YOUR_SECRET_KEY");
-/** 业务ID，易盾根据产品业务特点分配 */
+/** 这里填入在易盾官网申请的业务ID，易盾根据产品业务特点分配 */
 define("BUSINESSID", "YOUR_BUSINESS_ID");
 
-/** 易盾活动反作弊在线检测接口地址 */
-define("API_URL", "https://ac.dun.163yun.com/v2/activity/check");
+/** 易盾反作弊在线检测接口地址 */
+define("API_URL", "https://ac.dun.163.com/v3/common/check");
 /** api version */
-define("VERSION", "200");
+define("VERSION", "300");
 /** API timeout*/
 define("API_TIMEOUT", 1);
 /** php内部使用的字符串编码 */
@@ -54,7 +54,7 @@ function convert_null($params) {
 }
 
 /**
- * 活动反作弊检测接口简单封装
+ * 反作弊检测接口简单封装
  * $params 请求参数
  */
 function check($params){
@@ -98,19 +98,21 @@ function main(){
     $params['registerIp'] = '请替换成用户注册时用的IP';
 	$params["activityId"] = "请替换成活动的唯一标识";
     $params["target"] = "请替换成活动的目标，比如：被点赞用户的唯一标识";
+    $params["nickname"] = "请替换成用户昵称，比如：昵称";
+    $params["userLevel"] = "请替换成用户等级，比如：VIP用户";
+    $params["extData"] = "附加数据，json格式";
 	*/
-	
+
     try {
         $ret = check($params); 
         if ($ret["code"] == 200) {
             $action = $ret["result"]["action"];
-            $hitType = $ret["result"]["hitType"];
             if ($action == 0) {
-                echo "正常";
+                echo "正常（放行）";
             } else if ($action == 10) {
-                echo "有作弊的嫌疑";
+                echo "正常（观察）";
             } else if ($action == 20) {
-                echo "有明显的作弊特征";
+                echo "致命（拦截）";
             }
         }else{
 			// 接口调用出现错误
@@ -121,6 +123,7 @@ function main(){
     } catch (Exception $e) {
         echo "接口调用异常（超时 等），当作[正常]处理";
     }
+    // 继续后面的业务逻辑
 }
 
 main();

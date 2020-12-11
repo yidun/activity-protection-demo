@@ -10,12 +10,14 @@ public class SignatureUtils {
 
     /**
      * 生成签名信息
+     * 
      * @param secretKey 产品私钥
      * @param params 接口请求参数名和参数值map，不包括signature参数名
      * @return
      * @throws UnsupportedEncodingException
      */
-    public static String genSignature(String secretKey, Map<String, String> params) throws UnsupportedEncodingException {
+    public static String genSignature(String secretKey, Map<String, String> params)
+            throws UnsupportedEncodingException {
         // 1. 参数名按照ASCII码表升序排序
         String[] keys = params.keySet().toArray(new String[0]);
         Arrays.sort(keys);

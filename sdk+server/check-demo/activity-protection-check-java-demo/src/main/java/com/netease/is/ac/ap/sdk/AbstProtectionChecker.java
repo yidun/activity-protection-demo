@@ -41,41 +41,48 @@ public abstract class AbstProtectionChecker {
         this.businessId = businessId;
     }
 
+    /**
+     * 发送check请求，处理返回结果
+     * 
+     * @param params 请求参数
+     * @return
+     */
     private CheckResult check(Map<String, String> params) {
+        // 发送check请求，业务方可以选择自己熟悉的工具包发送请求
+        // 请特别注意，调用接口时，请设置http超时时间
+        // 建议http超时的情况下，认为识别结果为“正常”
+        String response = HttpClient4Utils.sendPost(this.apiUrl, params);
         try {
-            String response = HttpClient4Utils.sendPost(this.apiUrl, params);
             // 解析响应
             JsonObject jObject = new JsonParser().parse(response).getAsJsonObject();
             int code = jObject.get("code").getAsInt();
             String msg = jObject.get("msg").getAsString();
             if (code == 200) {
-                // code==200说明接口正常
                 JsonObject dataObject = jObject.getAsJsonObject("result");
+                System.out.println(dataObject);
                 int action = dataObject.get("action").getAsInt();
-                // hitType为命中原因，具体取值见文档
-                int hitType = dataObject.get("hitType").getAsInt();
                 if (action == 0) {
-                    return CheckResult.NORMAL;
+                    System.out.println("正常（放行）");
                 } else if (action == 10) {
-                    return CheckResult.SUSPECT;
+                    System.out.println("正常（观察）");
                 } else if (action == 20) {
-                    return CheckResult.FATAL;
+                    System.out.println("致命（拦截）");
                 }
+                // 获取具体的设备信息
+                // JsonObject deviceObj = dataObject.getAsJsonObject("detail");
             } else {
-                // 接口调用出现错误
-                // 请根据错误码 和 错误消息判断原因
-                System.err.println(String.format("ERROR: code=%d, msg=%s", code, msg));
+                System.out.println(String.format("ERROR: code=%d, msg=%s", code, msg));
             }
         } catch (Exception e) {
-            // log
-            System.out.println("接口调用异常（超时 等），请检查网络是否正常");
+            System.out.println("接口调用异常（超时 等），当作[正常]处理");
+            e.printStackTrace();
         }
 
         return CheckResult.ERROR;
     }
 
     /**
-     * 通过token查询结果
+     * 封装公共参数和业务参数，发送check请求
      * 
      * @param token 前端提交的查询token
      * @param businessParams 业务数据
@@ -84,8 +91,8 @@ public abstract class AbstProtectionChecker {
      */
     public CheckResult check(String token, Map<String, String> businessParams) throws Exception {
         Map<String, String> params = new HashMap<String, String>();
-
-        params.put("version", "200");
+        // 这里填入公共参数
+        params.put("version", "300");
         params.put("secretId", getSecretId());
         params.put("businessId", getBusinessId());
         params.put("timestamp", System.currentTimeMillis() / 1000 + "");
@@ -96,7 +103,7 @@ public abstract class AbstProtectionChecker {
             params.putAll(businessParams);
         }
 
-        // 生成签名，参见签名过程的示例代码
+        // 生成签名，参见SignatureUtils#genSignature
         params.put("signature", SignatureUtils.genSignature(getSecretKey(), params));
 
         return check(params);
