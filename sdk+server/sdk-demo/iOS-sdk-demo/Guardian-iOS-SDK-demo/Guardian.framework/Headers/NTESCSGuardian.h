@@ -102,4 +102,9 @@ typedef void (^ tokenBlock)(NSString *token, NSInteger code, NSString *message);
  */
 + (NSString *)getSDKVersion;
 
+/**
+获取设备指纹
+*/
++ (NSString *)getDeviceID;
+
 @end
