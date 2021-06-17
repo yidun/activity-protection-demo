@@ -9,13 +9,6 @@
 #import "MachineVerification.h"
 #import <CommonCrypto/CommonDigest.h>
 
-//#ifdef TEST_ENVIROMENT
-//#define secretId        @"002b08e8a058483f8bc39cfa06e9977a"
-//#define secretKey       @"2a42299a521748e997060d692d388901"
-//#else
-//#define secretId        @"0037a5d31ddfd01015a945f200f005c6"
-//#define secretKey       @"8277c11b2838d2a531c2ae88e1a1cc90"
-//#endif
 
 @implementation MachineVerification
 
