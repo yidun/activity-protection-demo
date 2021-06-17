@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#define product_number @"YD00000560173457"
-#define business_key @"9879404956ee471f87b26c36b3be4520"
-#define secret_key @"8277c11b2838d2a531c2ae88e1a1cc90"
-#define secret_ID @"0037a5d31ddfd01015a945f200f005c6"
+#define product_number @"your_product_number"
+#define business_key @"your_business_key"
+#define secret_key @"your_secret_key"
+#define secret_ID @"your_secret_ID"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
