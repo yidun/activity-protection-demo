@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="en3-Kb-S2Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="en3-Kb-S2Z">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,33 +16,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点赞页面" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lR-fz-yMs">
-                                <rect key="frame" x="135" y="80" width="105.5" height="31.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vqm-mZ-l4s">
-                                <rect key="frame" x="137.5" y="313.5" width="100" height="40"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vqm-mZ-l4s">
+                                <rect key="frame" x="137.5" y="283.5" width="100" height="40"/>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Gv0-lg-WHo"/>
                                     <constraint firstAttribute="width" constant="100" id="ZTl-XO-lrP"/>
                                 </constraints>
-                                <state key="normal" title="👍点赞👍"/>
+                                <state key="normal" title="获取token"/>
                                 <connections>
-                                    <action selector="praiseAction:" destination="7C0-Sp-hpd" eventType="touchUpInside" id="aVd-3O-oAu"/>
+                                    <action selector="getTokenAction:" destination="7C0-Sp-hpd" eventType="touchUpInside" id="nIn-mJ-ljj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7u6-an-nhW">
+                                <rect key="frame" x="137.5" y="353" width="100" height="40"/>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="PFW-96-z8f"/>
+                                    <constraint firstAttribute="height" constant="40" id="yHr-c1-73B"/>
+                                </constraints>
+                                <state key="normal" title="check"/>
+                                <connections>
+                                    <action selector="checkAction:" destination="7C0-Sp-hpd" eventType="touchUpInside" id="Vsx-uF-cYK"/>
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="TXs-rj-LFX"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Vqm-mZ-l4s" firstAttribute="centerX" secondItem="2mt-rd-Mqg" secondAttribute="centerX" id="4XO-zY-OwE"/>
-                            <constraint firstItem="Vqm-mZ-l4s" firstAttribute="centerY" secondItem="2mt-rd-Mqg" secondAttribute="centerY" id="Uxl-Gp-oJb"/>
-                            <constraint firstItem="4lR-fz-yMs" firstAttribute="top" secondItem="TXs-rj-LFX" secondAttribute="top" constant="80" id="aJV-hD-1Md"/>
-                            <constraint firstItem="4lR-fz-yMs" firstAttribute="centerX" secondItem="2mt-rd-Mqg" secondAttribute="centerX" id="bcU-49-1ZS"/>
+                            <constraint firstItem="Vqm-mZ-l4s" firstAttribute="centerY" secondItem="2mt-rd-Mqg" secondAttribute="centerY" constant="-30" id="Uxl-Gp-oJb"/>
+                            <constraint firstItem="7u6-an-nhW" firstAttribute="centerX" secondItem="Vqm-mZ-l4s" secondAttribute="centerX" id="lpt-hH-uc1"/>
+                            <constraint firstItem="7u6-an-nhW" firstAttribute="top" secondItem="Vqm-mZ-l4s" secondAttribute="bottom" constant="29.5" id="nsQ-x8-MGq"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="TXs-rj-LFX"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Test" id="lHa-zO-XYi"/>
                 </viewController>
@@ -68,4 +74,9 @@
             <point key="canvasLocation" x="-1301" y="-239"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
