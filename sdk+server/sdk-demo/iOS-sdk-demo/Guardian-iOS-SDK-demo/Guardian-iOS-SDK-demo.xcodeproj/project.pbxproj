@@ -10,6 +10,7 @@
 		387D2AF224E26F3D00418179 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387D2AF124E26F3D00418179 /* AVFoundation.framework */; };
 		387D2AF424E26F4300418179 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387D2AF324E26F4300418179 /* CoreTelephony.framework */; };
 		387D2AF624E26F4A00418179 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387D2AF524E26F4A00418179 /* SystemConfiguration.framework */; };
+		38BB89D4267B1C67004E9149 /* MachineVerification.m in Sources */ = {isa = PBXBuildFile; fileRef = 38BB89D3267B1C67004E9149 /* MachineVerification.m */; };
 		DC21937022311CE800BA6CA4 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC21936F22311CE800BA6CA4 /* AdSupport.framework */; };
 		DC21937322311D2D00BA6CA4 /* Guardian.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E656F1D61FB47A2E001ABE82 /* Guardian.framework */; };
 		E656F1A51FB479F9001ABE82 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E656F1A41FB479F9001ABE82 /* AppDelegate.m */; };
@@ -41,6 +42,8 @@
 		387D2AF124E26F3D00418179 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		387D2AF324E26F4300418179 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		387D2AF524E26F4A00418179 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		38BB89D2267B1C67004E9149 /* MachineVerification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MachineVerification.h; sourceTree = "<group>"; };
+		38BB89D3267B1C67004E9149 /* MachineVerification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MachineVerification.m; sourceTree = "<group>"; };
 		DC21936F22311CE800BA6CA4 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		DC21937122311CFD00BA6CA4 /* Guardian.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Guardian.framework; path = ../Guardian.framework; sourceTree = "<group>"; };
 		E656F1A01FB479F9001ABE82 /* Guardian-iOS-SDK-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guardian-iOS-SDK-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +117,8 @@
 				E656F1A41FB479F9001ABE82 /* AppDelegate.m */,
 				E656F1DB1FB47AE6001ABE82 /* ViewController.h */,
 				E656F1DC1FB47AE6001ABE82 /* ViewController.m */,
+				38BB89D2267B1C67004E9149 /* MachineVerification.h */,
+				38BB89D3267B1C67004E9149 /* MachineVerification.m */,
 				E656F1A91FB479F9001ABE82 /* Main.storyboard */,
 				E656F1AC1FB479F9001ABE82 /* Assets.xcassets */,
 				E656F1AE1FB479F9001ABE82 /* LaunchScreen.storyboard */,
@@ -269,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38BB89D4267B1C67004E9149 /* MachineVerification.m in Sources */,
 				E656F1DD1FB47AE6001ABE82 /* ViewController.m in Sources */,
 				E656F1B31FB479F9001ABE82 /* main.m in Sources */,
 				E656F1A51FB479F9001ABE82 /* AppDelegate.m in Sources */,

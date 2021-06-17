@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <Guardian/NTESCSGuardian.h>
 
+
 @interface AppDelegate ()
 
 @end
@@ -20,7 +21,7 @@
     // Override point for customization after application launch.
         
     //必要步骤 初始化
-    [NTESCSGuardian initWithProductNumber:@"your_product_number" completeHandler:^(NSInteger code, NSString *message) {
+    [NTESCSGuardian initWithProductNumber:product_number completeHandler:^(NSInteger code, NSString *message) {
         
     
     }];
