@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
     defaultConfig {
         applicationId "com.netease.activitydemo"
-        minSdkVersion 14
-        targetSdkVersion 25
+        minSdkVersion 16
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         ndk {
@@ -28,8 +28,8 @@ repositories {
 }
 
 dependencies {
-
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile(name:'netmobsecLib-release', ext:'aar')
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation(name:'netmobsecLib-release', ext:'aar')
 
 }
